@@ -89,14 +89,14 @@ void getData(){//获取数据内容并打印在屏幕上
     radio.read( &myData, sizeof(myData) );
 	
 	//move
-  if(myData.joyStick_A_X>700){
+  if(myData.joyStick_B_X>700){
     q();  
-  }else if(myData.joyStick_A_X<200){
+  }else if(myData.joyStick_B_X<200){
     h();
-  }else if(myData.joyStick_A_Y>700){
+  }else if(myData.joyStick_B_Y>700){
     r1();
     r2();  
-  }else if(myData.joyStick_A_Y<200){
+  }else if(myData.joyStick_B_Y<200){
     l1();
     l2();  
   }else{
