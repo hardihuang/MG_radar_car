@@ -41,7 +41,7 @@
 
 //RF24L01配置
 //RF24 radio(7, 8);
-RF24 radio(A3, A2); // CE, CSN         
+RF24 radio(A3, A4); // CE, CSN         
 const byte address[6] = "00010";     //Byte of array representing the address. This is the address where we will send the data. This should be same on the receiving side.
 
 //定义输入按键引脚

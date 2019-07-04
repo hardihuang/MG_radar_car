@@ -91,8 +91,10 @@ void getData(){//获取数据内容并打印在屏幕上
 	//move
   if(myData.joyStick_B_X>700){
     q();  
+    //Serial.println("forward");
   }else if(myData.joyStick_B_X<200){
     h();
+    //Serial.println("backward");
   }else if(myData.joyStick_B_Y>700){
     r1();
     r2();  
@@ -100,7 +102,7 @@ void getData(){//获取数据内容并打印在屏幕上
     l1();
     l2();  
   }else{
-     stay();
+     //stay();
   }
 
   
@@ -118,8 +120,8 @@ void getData(){//获取数据内容并打印在屏幕上
   Serial.print(" ");
   Serial.print(myData.joyStick_B_Y);
   Serial.println(" ");
-  delay(50);
-    
+//  delay(50);
+//    
   } 
 }
 

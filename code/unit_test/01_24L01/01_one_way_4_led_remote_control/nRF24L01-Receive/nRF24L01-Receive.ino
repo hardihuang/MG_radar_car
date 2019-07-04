@@ -40,13 +40,9 @@
 #include <RF24.h>
 
 //RF24L01配置
-<<<<<<< HEAD
-RF24 radio(7, 8); // CE, CSN
-const byte address[6] = "00001";
-=======
-RF24 radio(A3, A2); // CE, CSN
+RF24 radio(A3, A4); // CE, CSN
 const byte address[6] = "00010";
->>>>>>> 95c7adb936a1a21c7634744fdc5aacd263fb2a9f
+
 
 int ledA = 5;
 int ledB = 2;

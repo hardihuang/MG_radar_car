@@ -28,13 +28,9 @@
 #include <RF24.h>
 
 //RF24L01配置
-RF24 radio(A5, A4); // CE, CSN
+RF24 radio(A3, A4); // CE, CSN
 const byte address[6] = "00010";
 
-int ledA = 5;
-int ledB = 2;
-int ledC = 3;
-int ledD = 4;
 
 //发送的数据结构
 struct dataStruct {
@@ -50,7 +46,7 @@ struct dataStruct {
 void setup() {
   Serial.begin(9600);
   radioSetup();
-  ledSetup();
+
 }
 
 void loop(){
@@ -78,9 +74,7 @@ void getData(){//获取数据内容并打印在屏幕上
   Serial.print(" ");
   Serial.print(myData.joyStick_B_Y);
   Serial.println(" ");
-	
-    delay(50);
-    
+  delay(50);
   } 
 }
 
@@ -89,11 +83,4 @@ void radioSetup(){//RF24L01接收端初始化
   radio.openReadingPipe(0, address);   //Setting the address at which we will receive the data
   radio.setPALevel(RF24_PA_MIN);       //You can set this as minimum or maximum depending on the distance between the transmitter and receiver.
   radio.startListening();              //This sets the module as receiver
-}
-
-void ledSetup(){
-	pinMode(ledA,OUTPUT);
-	pinMode(ledB,OUTPUT);
-	pinMode(ledC,OUTPUT);
-	pinMode(ledD,OUTPUT);
 }
