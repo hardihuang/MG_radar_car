@@ -1,7 +1,7 @@
 /*
 ========================================
-  24L01无线通信 V0.1
-  by Hardi Huang  (2019.05.05)
+  24L01无线通信 V0.2
+  刘禹川
 ========================================
 
 
@@ -19,8 +19,8 @@
 ---------------------------------------
 	1 - GND
 	2 - VCC 连接3.3V
-	3 - CE 连接D7
-	4 - CSN 连接D8
+	3 - CE 连接A5
+	4 - CSN 连接A4
 	5 - SCK 连接D13
 	6 - MOSI 连接D11
 	7 - MISO 连接D12
@@ -40,26 +40,23 @@
 #include <RF24.h>
 
 //RF24L01配置
-<<<<<<< HEAD
-RF24 radio(7, 8); // CE, CSN
-const byte address[6] = "00001";
-=======
-RF24 radio(A3, A2); // CE, CSN
+RF24 radio(A5, A4); // CE, CSN
 const byte address[6] = "00010";
->>>>>>> 95c7adb936a1a21c7634744fdc5aacd263fb2a9f
 
 int ledA = 5;
 int ledB = 2;
 int ledC = 3;
 int ledD = 4;
 
-//接收的数据结构
+//发送的数据结构
 struct dataStruct {
   unsigned long _micros;
   bool btnA;
   bool btnB;
-  bool btnC;
-  bool btnD;
+  int joyStick_A_X;
+  int joyStick_A_Y;
+  int joyStick_B_X;
+  int joyStick_B_Y;
 } myData;
 
 void setup() {
@@ -77,20 +74,22 @@ void getData(){//获取数据内容并打印在屏幕上
     radio.read( &myData, sizeof(myData) );
 	
 	//点亮对应LED
-	if(myData.btnA){digitalWrite(ledA,HIGH);}else{digitalWrite(ledA,LOW);}
-	if(myData.btnB){digitalWrite(ledB,HIGH);}else{digitalWrite(ledB,LOW);}
-	if(myData.btnC){digitalWrite(ledC,HIGH);}else{digitalWrite(ledC,LOW);}
-	if(myData.btnD){digitalWrite(ledD,HIGH);}else{digitalWrite(ledD,LOW);}
+
+  
 	
 	//打印内容
-	Serial.print("btnA: ");
-    Serial.print(myData.btnA);
-    Serial.print(" ||btnB: ");
-    Serial.print(myData.btnB);
-    Serial.print(" ||btnC: ");
-    Serial.print(myData.btnC);
-    Serial.print(" ||btnD: ");
-    Serial.println(myData.btnD);
+  Serial.print(myData.btnA);
+  Serial.print(" ");
+  Serial.print(myData.btnB);
+  Serial.print(" ");
+  Serial.print(myData.joyStick_A_X);
+  Serial.print(" ");
+  Serial.print(myData.joyStick_A_Y);
+  Serial.print(" ");
+  Serial.print(myData.joyStick_B_X);
+  Serial.print(" ");
+  Serial.print(myData.joyStick_B_Y);
+  Serial.println(" ");
 	
     delay(50);
     
