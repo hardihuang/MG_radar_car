@@ -37,7 +37,6 @@
 
 //引入库文件
 #include <SPI.h>
-#include <nRF24L01.h>
 #include <RF24.h>
 
 //RF24L01配置
