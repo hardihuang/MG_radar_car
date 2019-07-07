@@ -14,7 +14,7 @@ Adafruit_SH1106 display(OLED_RESET);
 #error("Height incorrect, please fix Adafruit_SH1106.h!");
 #endif
 //RF24L01配置
-RF24 radio(5, 4); // CE, CSN
+RF24 radio(7, 8); // CE, CSN
 const byte address[6] = "00010";     //Byte of array representing the address. This is the address where we will send the data. This should be same on the receiving side.
 int dotX = 1;
 //定义输入按键引脚

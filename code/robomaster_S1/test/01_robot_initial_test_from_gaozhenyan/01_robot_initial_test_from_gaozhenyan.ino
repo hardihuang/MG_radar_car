@@ -177,9 +177,9 @@ void getData() { //获取数据内容并打印在屏幕上
         robotMove(9);
       } else if (myData.joyStick_A_X < 350 && myData.joyStick_A_Y > 750) {
         robotMove(10);
-      } else if (myData.joyStick_A_X > 750) { ////// primary functions
+      } else if (myData.joyStick_A_X < 350) { ////// primary functions
         robotMove(1);
-      } else if (myData.joyStick_A_X < 350) {
+      } else if (myData.joyStick_A_X > 750) {
         robotMove(2);
       } else if (myData.joyStick_A_Y > 750) {
         robotMove(3);
@@ -198,7 +198,7 @@ void getData() { //获取数据内容并打印在屏幕上
     }
     
 
-    //    //打印内容
+     //打印内容
         Serial.print(myData.btnA);
         Serial.print(" ");
         Serial.print(myData.btnB);
