@@ -91,19 +91,19 @@ void DMove(int mode)// 0 is no action, 1 is foward, 2, is backward (movement)
 void robotMove(int Direction)
 {
   switch (Direction) {  // 0 = stop, 1 = forward....5 =
-    case 0:
+    case 0://stop
       AMove(0);
       BMove(0);
       CMove(0);
       DMove(0);
       break;
-    case 1:
+    case 1://forward
       AMove(1);
       BMove(1);
       CMove(1);
       DMove(1);
       break;
-    case 2:
+    case 2://backward
       AMove(2);
       BMove(2);
       CMove(2);
@@ -145,13 +145,13 @@ void robotMove(int Direction)
       CMove(0);
       DMove(1);
       break;
-    case 9:
+    case 9://left backward
       AMove(2);
       BMove(0);
       CMove(0);
       DMove(2);
       break;
-    case 10:
+    case 10://right backward
       AMove(0);
       BMove(2);
       CMove(2);
@@ -169,14 +169,14 @@ void getData() { //获取数据内容并打印在屏幕上
   if (radio.available()) {
     radio.read( &myData, sizeof(myData) );
     if(myData.joyStick_A_X+myData.joyStick_A_Y+myData.joyStick_B_X+myData.joyStick_B_Y+myData.btnA+myData.btnB != 0){
-      if (myData.joyStick_A_X > 750 && myData.joyStick_A_Y < 350) {
-        robotMove(7);
-      } else if (myData.joyStick_A_X > 750 && myData.joyStick_A_Y > 750) {
+      if (myData.joyStick_A_X > 750 && myData.joyStick_A_Y < 350) {//right backward
         robotMove(8);
-      } else if (myData.joyStick_A_X < 350 && myData.joyStick_A_Y < 350) {
-        robotMove(9);
-      } else if (myData.joyStick_A_X < 350 && myData.joyStick_A_Y > 750) {
+      } else if (myData.joyStick_A_X > 750 && myData.joyStick_A_Y > 750) {//right forward
         robotMove(10);
+      } else if (myData.joyStick_A_X < 350 && myData.joyStick_A_Y < 350) {
+        robotMove(7);
+      } else if (myData.joyStick_A_X < 350 && myData.joyStick_A_Y > 750) {
+        robotMove(9);
       } else if (myData.joyStick_A_X < 350) { ////// primary functions
         robotMove(1);
       } else if (myData.joyStick_A_X > 750) {
